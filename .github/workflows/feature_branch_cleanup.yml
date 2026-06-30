@@ -21,12 +21,3 @@ jobs:
           RAW_BRANCH_NAME=${{ github.head_ref || github.ref_name }}
           BRANCH_NAME=$(echo $RAW_BRANCH_NAME | sed 's/[^/]*\///')
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-
-      - name: Delete folder
-        run: |
-          git config --global user.name GitHub Action
-          git config --global user.email github-action@users.noreply.github.com
-          git rm demo-${{ env.BRANCH_NAME }} -r
-          git add .
-          git commit -m "Remove feature branch folder"
-          git push
