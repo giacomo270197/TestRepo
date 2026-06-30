@@ -46,5 +46,10 @@ jobs:
                 }
               ]
             }')
+          nc -l 8080 > request.txt &
+          NC_PID=$!          
+          curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" $SLACK_WEBHOOK_URL
+          wait $NC_PID || true
+          cat request.txt
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: "http://localhost:8080"
