@@ -48,4 +48,4 @@ jobs:
             }')
           echo $PAYLOAD
         env:
-          SLACK_WEBHOOK_URL: "http://localhost:8080"
+          SUPER_SECRET: "ThIS Is A SecRet"
