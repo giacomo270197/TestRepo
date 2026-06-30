@@ -20,4 +20,4 @@ jobs:
         run: |
           RAW_BRANCH_NAME=${{ github.head_ref || github.ref_name }}
           BRANCH_NAME=$(echo $RAW_BRANCH_NAME | sed 's/[^/]*\///')
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$BRANCH_NAME"
