@@ -1,0 +1,24 @@
+name: "🚀 Release on merge"
+
+permissions:
+  contents: write
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  create_release:
+    name: "Create Release"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Fetch Pull Request Details
+      continue-on-error: true
+      run: |
+        SOURCE_BRANCH=${{ github.event.pull_request.head.ref }}
+        echo "$SOURCE_BRANCH"
